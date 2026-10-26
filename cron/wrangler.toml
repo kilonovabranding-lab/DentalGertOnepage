@@ -1,0 +1,24 @@
+# Worker de tareas programadas (Pages no tiene cron). Comparte la base D1 con el sitio.
+name = "dental-gert-cron"
+main = "index.js"
+compatibility_date = "2026-01-15"
+workers_dev = false
+
+[triggers]
+crons = ["*/15 * * * *", "5 6 1 * *", "0 9 * * *"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "dental-gert"
+database_id = "00000000-0000-0000-0000-000000000000" # TODO: mismo id que en ../wrangler.toml
+migrations_dir = "../migrations"
+
+[vars]
+CALENDAR_ID = "primary"
+COMPOSIO_USER_ID = "pg-test-8dbf7e88-4793-4c73-80f7-ba474b8ff67d"
+CA_CALENDAR_DENTAL = "ca_pIlUStG-WdPQ"
+CA_GMAIL_DENTAL = "ca_trcCKqh7TCOp"
+CA_SHEETS_DENTAL = "ca_K0_GAcW8pTEl"
+CA_DRIVE_DENTAL = "ca_J1M-zFKkJQjD"
+# CA_SHEETS_REM = "ca_..."
+# CA_DRIVE_REM = "ca_..."

@@ -1,0 +1,24 @@
+# Cloudflare Pages: sitio estático (dist/) + Pages Functions (functions/api).
+name = "dental-gert"
+pages_build_output_dir = "dist"
+compatibility_date = "2026-01-15"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "dental-gert"
+database_id = "00000000-0000-0000-0000-000000000000" # TODO: reemplazar con el id de `wrangler d1 create dental-gert`
+migrations_dir = "migrations"
+
+[vars]
+SITE_URL = "https://dental-gert.pages.dev"
+CALENDAR_ID = "primary"
+COMPOSIO_USER_ID = "pg-test-8dbf7e88-4793-4c73-80f7-ba474b8ff67d"
+# Conexiones de dentalgert@gmail.com verificadas con scripts/composio-discover.mjs
+CA_CALENDAR_DENTAL = "ca_pIlUStG-WdPQ"
+CA_GMAIL_DENTAL = "ca_trcCKqh7TCOp"
+CA_SHEETS_DENTAL = "ca_K0_GAcW8pTEl"
+CA_DRIVE_DENTAL = "ca_J1M-zFKkJQjD"
+# TODO: las conexiones de remagencysv@gmail.com dan 401; reconectarlas en Composio y añadir aquí:
+# CA_SHEETS_REM = "ca_..."
+# CA_DRIVE_REM = "ca_..."
+TURNSTILE_SITE_KEY = "1x00000000000000000000AA" # clave de prueba; TODO: reemplazar por la real de Turnstile
