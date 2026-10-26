@@ -10,7 +10,7 @@ crons = ["*/15 * * * *", "5 6 1 * *", "0 9 * * *"]
 [[d1_databases]]
 binding = "DB"
 database_name = "dental-gert"
-database_id = "00000000-0000-0000-0000-000000000000" # TODO: mismo id que en ../wrangler.toml
+database_id = "29bc98a5-335d-45bd-8eb4-d1d9fbc99720"
 migrations_dir = "../migrations"
 
 [vars]

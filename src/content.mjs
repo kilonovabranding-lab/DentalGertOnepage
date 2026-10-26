@@ -15,7 +15,7 @@ export const BRAND = {
   address: { street: 'Colonia Médica', city: 'San Salvador', region: 'San Salvador', country: 'SV' }, // TODO: calle y número exactos
   ga4: '', // TODO: ID de GA4 (G-XXXXXXX). Vacío = no se carga
   cfBeacon: '', // TODO: token de Cloudflare Web Analytics (o activarlo desde el panel de Pages)
-  turnstileSiteKey: process.env.TURNSTILE_SITE_KEY || '1x00000000000000000000AA', // clave de prueba de Cloudflare
+  turnstileSiteKey: process.env.TURNSTILE_SITE_KEY || '0x4AAAAAAFnR6Op7l_KBzyei',
 }
 
 // Horario visible (el servidor usa lib/config.js).

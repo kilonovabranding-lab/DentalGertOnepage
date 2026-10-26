@@ -6,7 +6,7 @@ compatibility_date = "2026-01-15"
 [[d1_databases]]
 binding = "DB"
 database_name = "dental-gert"
-database_id = "00000000-0000-0000-0000-000000000000" # TODO: reemplazar con el id de `wrangler d1 create dental-gert`
+database_id = "29bc98a5-335d-45bd-8eb4-d1d9fbc99720"
 migrations_dir = "migrations"
 
 [vars]
@@ -21,4 +21,4 @@ CA_DRIVE_DENTAL = "ca_J1M-zFKkJQjD"
 # TODO: las conexiones de remagencysv@gmail.com dan 401; reconectarlas en Composio y añadir aquí:
 # CA_SHEETS_REM = "ca_..."
 # CA_DRIVE_REM = "ca_..."
-TURNSTILE_SITE_KEY = "1x00000000000000000000AA" # clave de prueba; TODO: reemplazar por la real de Turnstile
+TURNSTILE_SITE_KEY = "0x4AAAAAAFnR6Op7l_KBzyei"
