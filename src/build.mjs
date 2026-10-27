@@ -238,7 +238,6 @@ function home(t) {
 <section class="hero" id="inicio">
   <div class="wrap hero-grid">
     <div class="hero-copy">
-      <p class="eyebrow"><span class="dot-live" data-open-status></span><span data-status-text>${h.eyebrow}</span></p>
       <h1>${h.h1}</h1>
       <p class="tagline">${BRAND.tagline[t.lang]}</p>
       <p class="lead">${h.lead}</p>

@@ -40,21 +40,6 @@
   mnav?.addEventListener('click', (e) => { if (e.target.closest('a')) setMenu(false) })
   addEventListener('keydown', (e) => { if (e.key === 'Escape' && burger?.getAttribute('aria-expanded') === 'true') { setMenu(false); burger.focus() } })
 
-  /* ---------- Abierto ahora (horario de El Salvador, UTC-6) ---------- */
-  const status = $('[data-open-status]')
-  if (status) {
-    const t = new Date(Date.now() - 6 * 3600e3), d = t.getUTCDay(), m = t.getUTCHours() * 60 + t.getUTCMinutes()
-    const W = { 1: [[480, 720], [810, 990]], 2: [[480, 720], [810, 990]], 3: [[480, 720], [810, 990]], 4: [[480, 720], [810, 990]], 5: [[480, 720], [810, 990]], 6: [[480, 780]] }
-    const fmt = (x) => { const h = Math.floor(x / 60), mm = String(x % 60).padStart(2, '0'); return `${h > 12 ? h - 12 : h}:${mm} ${h < 12 ? 'am' : h === 12 ? 'md' : 'pm'}` }
-    const cur = (W[d] || []).find(([a, b]) => m >= a && m < b)
-    const txt = $('[data-status-text]')
-    if (cur) { status.classList.add('is-open'); txt.textContent = `${I.hero.open} · ${I.hero.closes} ${fmt(cur[1]).replace('md', I.lang === 'es' ? 'm. d.' : 'pm')}` }
-    else {
-      const next = (W[d] || []).find(([a]) => a > m)
-      txt.textContent = next ? `${I.hero.closed} · ${I.hero.opens} ${fmt(next[0])}` : `${I.hero.closed} · ${txt.textContent.split('·').pop().trim()}`
-    }
-  }
-
   /* ---------- Pestañas (Misión / Visión / Compromiso) ---------- */
   const tabs = $$('[role="tab"]')
   const selectTab = (tab) => {
@@ -145,8 +130,7 @@
     const draw = (els, vars = {}) => gsap.fromTo(els, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 1.1, ease: 'power2.inOut', stagger: .05, ...vars })
     // Hero
     const tl = gsap.timeline({ defaults: { ease: 'expo.out' } })
-    tl.from('.hero .eyebrow', { y: 20, opacity: 0, duration: .9 })
-      .from('.hero h1', { y: 40, opacity: 0, duration: 1.2 }, '<.1')
+    tl.from('.hero h1', { y: 40, opacity: 0, duration: 1.2 })
       .from('.hero .tagline, .hero .lead, .hero .cta-row, .hero .trust', { y: 24, opacity: 0, duration: 1, stagger: .08 }, '<.2')
       .from('.hero-photo', { clipPath: 'inset(12% 0 12% 0 round 30px)', scale: 1.06, duration: 1.6 }, 0)
     draw('.hero .ico path', { delay: .4 })

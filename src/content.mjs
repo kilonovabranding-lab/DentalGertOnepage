@@ -72,12 +72,10 @@ export const T = {
     cta: 'Agenda tu cita',
     menuOpen: 'Abrir menú', menuClose: 'Cerrar menú', theme: 'Cambiar entre modo claro y oscuro', langSwitch: 'Cambiar idioma a inglés',
     hero: {
-      eyebrow: 'Clínica dental · Colonia Médica, San Salvador',
       h1: 'Tu clínica dental en Colonia Médica, San Salvador',
       lead: 'Atención odontológica cercana y personalizada para toda la familia. Elige tu servicio, fecha y hora: tu cita queda confirmada en menos de un minuto.',
       wa: 'Escríbenos por WhatsApp',
       trust: ['Más de 6 años cuidando sonrisas', 'Atención para toda la familia', 'Materiales de calidad'],
-      open: 'Abierto ahora', closed: 'Cerrado ahora', closes: 'cierra', opens: 'abre',
       photoAlt: 'El Dr. Gerson Guerrero atendiendo a una paciente en Dental Gert',
     },
     bk: {
@@ -170,12 +168,10 @@ export const T = {
     cta: 'Book your appointment',
     menuOpen: 'Open menu', menuClose: 'Close menu', theme: 'Toggle light and dark mode', langSwitch: 'Switch language to Spanish',
     hero: {
-      eyebrow: 'Dental clinic · Colonia Médica, San Salvador',
       h1: 'Your dental clinic in Colonia Médica, San Salvador',
       lead: 'Warm, personalized dental care for the whole family. Choose your service, date and time: your appointment is confirmed in under a minute.',
       wa: 'Message us on WhatsApp',
       trust: ['Over 6 years caring for smiles', 'Care for the whole family', 'Quality materials'],
-      open: 'Open now', closed: 'Closed now', closes: 'closes', opens: 'opens',
       photoAlt: 'Dr. Gerson Guerrero treating a patient at Dental Gert',
     },
     bk: {
