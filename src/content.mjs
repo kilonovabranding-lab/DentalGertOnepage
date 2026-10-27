@@ -12,7 +12,8 @@ export const BRAND = {
   fb: 'https://www.facebook.com/DENTALGert',
   ig: 'https://www.instagram.com/dentalgert/',
   maps: 'https://maps.app.goo.gl/cWwQeTvxu6N4whk6A',
-  address: { street: 'Colonia Médica', city: 'San Salvador', region: 'San Salvador', country: 'SV' }, // TODO: calle y número exactos
+  address: { street: 'Pasaje Dr. Mariano Samayoa, edificio Betesda, Colonia Médica', city: 'San Salvador', region: 'San Salvador', country: 'SV' },
+  dentist: { name: 'Gerson Guerrero', jvpm: '5881' },
   ga4: '', // TODO: ID de GA4 (G-XXXXXXX). Vacío = no se carga
   cfBeacon: '', // TODO: token de Cloudflare Web Analytics (o activarlo desde el panel de Pages)
   turnstileSiteKey: process.env.TURNSTILE_SITE_KEY || '0x4AAAAAAFnR6Op7l_KBzyei',
@@ -77,7 +78,7 @@ export const T = {
       wa: 'Escríbenos por WhatsApp',
       trust: ['Más de 6 años cuidando sonrisas', 'Atención para toda la familia', 'Materiales de calidad'],
       open: 'Abierto ahora', closed: 'Cerrado ahora', closes: 'cierra', opens: 'abre',
-      photoAlt: 'Piezas dentales brillantes sobre fondo negro, Dental Gert',
+      photoAlt: 'El Dr. Gerson Guerrero atendiendo a una paciente en Dental Gert',
     },
     bk: {
       title: 'Agenda tu cita', close: 'Cerrar formulario',
@@ -114,11 +115,11 @@ export const T = {
     },
     services: { label: 'Servicios', h2: 'Cuidamos cada etapa de tu salud bucal', lead: 'Desde la primera revisión hasta los tratamientos especializados, con citas a tu medida.', book: 'Agendar este servicio', duration: 'Duración aprox.' },
     about: {
-      label: 'Quiénes somos', h2: 'Una sonrisa saludable es parte de tu bienestar',
+      doctor: { role: 'Odontólogo general', jvpm: 'JVPM' }, label: 'Quiénes somos', h2: 'Una sonrisa saludable es parte de tu bienestar',
       body: [
         'En Dental Gert creemos que una sonrisa saludable es parte fundamental del bienestar y la confianza de cada persona. Desde nuestros inicios, nos hemos enfocado en brindar una atención odontológica integral y personalizada, procurando que cada paciente reciba un servicio de calidad y una experiencia satisfactoria.',
         'Con una trayectoria de entre 6 y 10 años de atención, trabajamos con compromiso, confianza y calidez humana, ofreciendo soluciones odontológicas para toda la familia. Nos distinguimos por el trato amable, la atención individualizada y la calidad de los materiales utilizados en nuestros procedimientos.',
-        'Estamos ubicados en la Colonia Médica, San Salvador.',
+        'Estamos ubicados en Pasaje Dr. Mariano Samayoa, edificio Betesda, Colonia Médica, San Salvador.',
       ],
       tabs: [
         ['Nuestra misión', 'Elevar el bienestar de la comunidad mediante una atención odontológica personalizada y de excelencia. Nos enfocamos en la detección temprana de patologías y en la educación sobre hábitos de higiene oral. A través de tratamientos y rehabilitaciones especializadas, buscamos aliviar el dolor, recuperar la funcionalidad bucal y favorecer una sonrisa armónica que fortalezca la confianza y el amor propio de cada paciente.'],
@@ -137,13 +138,14 @@ export const T = {
         ['¿Atienden a niños?', 'Sí, ofrecemos atención odontológica para toda la familia.'],
         ['¿Atienden a pacientes extranjeros?', 'Sí. En el formulario elige “Extranjero” e ingresa tu pasaporte y tu número con el código de tu país.'],
         ['¿Cuánto dura cada tratamiento?', 'Diagnóstico y limpieza dental: 25 min. Relleno: 40 min. Extracción: 30 min. Endodoncia: 1 h. Cirugía de cordales y blanqueamiento: 1 h 15 min. Son tiempos aproximados por cita.'],
-        ['¿Qué formas de pago aceptan?', 'Escríbenos por WhatsApp y te confirmamos las formas de pago disponibles.'], // TODO: confirmar formas de pago
+        ['¿Qué formas de pago aceptan?', 'Puedes pagar en la clínica en efectivo o con tarjeta de crédito o débito (POS). No recibimos pagos en línea: agendar tu cita no tiene costo.'],
+        ['¿Dónde están ubicados?', 'En Pasaje Dr. Mariano Samayoa, edificio Betesda, Colonia Médica, San Salvador. Busca “Dental Gert” en Google Maps o usa el enlace “Cómo llegar” de esta página.'],
         ['¿Cuál es su horario?', 'Lunes a viernes de 8:00 a. m. a 12:00 m. d. y de 1:30 p. m. a 4:30 p. m. Sábados de 8:00 a. m. a 1:00 p. m. Domingos cerrado.'],
       ],
     },
     contact: {
       label: 'Contáctanos', h2: 'Estamos en Colonia Médica, San Salvador', lead: '¿Prefieres hablar con nosotros? Escríbenos y te ayudamos a encontrar el mejor horario.',
-      wa: 'WhatsApp', phone: 'Teléfono', email: 'Correo', address: 'Dirección', addressText: 'Colonia Médica, San Salvador', route: 'Cómo llegar', map: 'Ver mapa',
+      wa: 'WhatsApp', phone: 'Teléfono', email: 'Correo', address: 'Dirección', addressText: 'Pasaje Dr. Mariano Samayoa, edificio Betesda, Colonia Médica, San Salvador', route: 'Cómo llegar', map: 'Ver mapa',
       mapNote: 'El mapa de Google se carga al hacer clic.', hours: 'Horario',
       hoursRows: [['Lunes a viernes', '8:00 a. m. – 12:00 m. d.<br>1:30 p. m. – 4:30 p. m.'], ['Sábados', '8:00 a. m. – 1:00 p. m.'], ['Domingos', 'Cerrado']],
       social: 'Síguenos',
@@ -174,7 +176,7 @@ export const T = {
       wa: 'Message us on WhatsApp',
       trust: ['Over 6 years caring for smiles', 'Care for the whole family', 'Quality materials'],
       open: 'Open now', closed: 'Closed now', closes: 'closes', opens: 'opens',
-      photoAlt: 'Glossy dental crowns on a black background, Dental Gert',
+      photoAlt: 'Dr. Gerson Guerrero treating a patient at Dental Gert',
     },
     bk: {
       title: 'Book your appointment', close: 'Close form',
@@ -211,11 +213,11 @@ export const T = {
     },
     services: { label: 'Services', h2: 'We care for every stage of your oral health', lead: 'From your first check-up to specialized treatments, with appointments that fit your schedule.', book: 'Book this service', duration: 'Approx. duration' },
     about: {
-      label: 'About us', h2: 'A healthy smile is part of your well-being',
+      doctor: { role: 'General dentist', jvpm: 'JVPM' }, label: 'About us', h2: 'A healthy smile is part of your well-being',
       body: [
         'At Dental Gert we believe a healthy smile is a fundamental part of everyone’s well-being and confidence. Since day one we have focused on comprehensive, personalized dental care, making sure every patient receives quality service and a positive experience.',
         'With 6 to 10 years of practice, we work with commitment, trust and human warmth, offering dental solutions for the whole family. We stand out for our friendly care, individual attention and the quality of the materials we use.',
-        'We are located in Colonia Médica, San Salvador.',
+        'We are located at Pasaje Dr. Mariano Samayoa, edificio Betesda, Colonia Médica, San Salvador, El Salvador.',
       ],
       tabs: [
         ['Our mission', 'To raise our community’s well-being through personalized, excellent dental care. We focus on early detection and on teaching good oral hygiene habits. Through specialized treatments and rehabilitation, we aim to relieve pain, restore oral function and support a harmonious smile that strengthens each patient’s confidence and self-esteem.'],
@@ -234,13 +236,14 @@ export const T = {
         ['Do you treat children?', 'Yes, we offer dental care for the whole family.'],
         ['Do you treat international patients?', 'Yes. In the form choose “Foreign visitor” and enter your passport and phone number with your country code.'],
         ['How long does each treatment take?', 'Diagnosis and cleaning: 25 min. Filling: 40 min. Extraction: 30 min. Root canal: 1 h. Wisdom tooth surgery and whitening: 1 h 15 min. Times are approximate per visit.'],
-        ['Which payment methods do you accept?', 'Message us on WhatsApp and we’ll confirm the available payment methods.'],
+        ['Which payment methods do you accept?', 'You can pay at the clinic in cash or by credit or debit card (POS). We don’t take online payments: booking your appointment is free.'],
+        ['Where are you located?', 'At Pasaje Dr. Mariano Samayoa, edificio Betesda, Colonia Médica, San Salvador, El Salvador. Search “Dental Gert” on Google Maps or use the “Get directions” link on this page.'],
         ['What are your opening hours?', 'Monday to Friday 8:00 am – 12:00 pm and 1:30 pm – 4:30 pm. Saturday 8:00 am – 1:00 pm. Closed on Sundays.'],
       ],
     },
     contact: {
       label: 'Contact', h2: 'Find us in Colonia Médica, San Salvador', lead: 'Prefer to talk to us? Send us a message and we’ll help you find the best time.',
-      wa: 'WhatsApp', phone: 'Phone', email: 'Email', address: 'Address', addressText: 'Colonia Médica, San Salvador, El Salvador', route: 'Get directions', map: 'Show map',
+      wa: 'WhatsApp', phone: 'Phone', email: 'Email', address: 'Address', addressText: 'Pasaje Dr. Mariano Samayoa, edificio Betesda, Colonia Médica, San Salvador, El Salvador', route: 'Get directions', map: 'Show map',
       mapNote: 'The Google map loads when you click.', hours: 'Opening hours',
       hoursRows: [['Monday – Friday', '8:00 am – 12:00 pm<br>1:30 pm – 4:30 pm'], ['Saturday', '8:00 am – 1:00 pm'], ['Sunday', 'Closed']],
       social: 'Follow us',

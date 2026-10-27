@@ -67,7 +67,8 @@ function schema(t) {
     url: SITE + t.path, telephone: BRAND.phone, email: BRAND.email, image: SITE + photo('hero', 'hero'), logo: SITE + (hasLogo ? logoSrc : '/assets/img/isotipo-dental-gert.png'),
     address: { '@type': 'PostalAddress', streetAddress: BRAND.address.street, addressLocality: BRAND.address.city, addressRegion: BRAND.address.region, addressCountry: BRAND.address.country },
     hasMap: BRAND.maps, areaServed: 'San Salvador', priceRange: '$$', // TODO: confirmar rango de precios
-    sameAs: [BRAND.fb, BRAND.ig], knowsLanguage: ['es', 'en'],
+    sameAs: [BRAND.fb, BRAND.ig], knowsLanguage: ['es', 'en'], paymentAccepted: 'Cash, Credit Card, Debit Card', currenciesAccepted: 'USD',
+    employee: { '@type': 'Person', name: 'Dr. ' + BRAND.dentist.name, jobTitle: t.about.doctor.role, identifier: { '@type': 'PropertyValue', propertyID: 'JVPM', value: BRAND.dentist.jvpm } },
     openingHoursSpecification: HOURS.map((h) => ({ '@type': 'OpeningHoursSpecification', dayOfWeek: h.days.map((d) => 'https://schema.org/' + DAY[d]), opens: h.open, closes: h.close })),
     availableService: SERVICES.map((s) => ({ '@type': 'MedicalProcedure', name: s[t.lang].name, description: s[t.lang].desc })),
     potentialAction: { '@type': 'ReserveAction', target: { '@type': 'EntryPoint', urlTemplate: SITE + t.path + '#agendar', inLanguage: t.hreflang }, result: { '@type': 'Reservation', name: t.cta } },
@@ -277,6 +278,7 @@ function home(t) {
       <p class="label">${t.about.label}</p>
       <h2 id="about-h">${t.about.h2}</h2>
       ${t.about.body.map((p) => `<p>${p}</p>`).join('')}
+      <div class="doctor"><span class="doctor-ico">${icon('user')}</span><div><b>Dr. ${BRAND.dentist.name}</b><span>${t.about.doctor.role} · <abbr translate="no" title="Junta de Vigilancia de la Profesión Médica">${t.about.doctor.jvpm}</abbr> ${BRAND.dentist.jvpm}</span></div></div>
       <p class="signature">Dental Gert — ${BRAND.tagline[t.lang]}.</p>
     </div>
     <div class="about-side" data-reveal>
@@ -356,13 +358,19 @@ out('llms.txt', `# Dental Gert
 ## Servicios y duración aproximada por cita
 ${SERVICES.map((s) => `- ${s.es.name} (${duration(s.min)}): ${s.es.desc}`).join('\n')}
 
+## Odontólogo responsable
+- Dr. ${BRAND.dentist.name} (JVPM ${BRAND.dentist.jvpm})
+
+## Formas de pago
+- Efectivo y tarjeta de crédito o débito (POS) en la clínica. Agendar en línea no tiene costo.
+
 ## Horario
 - Lunes a viernes: 8:00 a. m. – 12:00 m. d. y 1:30 p. m. – 4:30 p. m.
 - Sábados: 8:00 a. m. – 1:00 p. m.
 - Domingos: cerrado
 
 ## Ubicación
-- Colonia Médica, San Salvador, El Salvador
+- ${BRAND.address.street}, ${BRAND.address.city}, El Salvador
 - Google Maps: ${BRAND.maps}
 
 ## Redes

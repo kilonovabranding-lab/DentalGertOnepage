@@ -411,3 +411,11 @@ p.field-err { padding: 0 6px; }
   .hdr.scrolled { background: var(--glass); -webkit-backdrop-filter: blur(16px) saturate(160%); backdrop-filter: blur(16px) saturate(160%); border-bottom: 1px solid var(--line); }
   .hdr.scrolled .brand { background: none; border: 0; padding: 0; backdrop-filter: none; }
 }
+
+/* Odontólogo responsable */
+.doctor { display: flex; align-items: center; gap: 14px; margin-top: 1.5rem; padding: 14px 18px; border-radius: var(--radius-s); background: var(--surface); border: 1px solid var(--line); width: fit-content; max-width: 100%; }
+.doctor-ico { display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: color-mix(in srgb, var(--primary) 10%, transparent); color: var(--primary); flex: none; }
+.doctor b { display: block; color: var(--text); }
+.doctor span { font-size: .88rem; color: var(--muted); }
+.doctor abbr { text-decoration: none; }
+.hero-photo img { object-position: 40% 30%; }
