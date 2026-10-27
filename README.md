@@ -39,8 +39,8 @@ TURNSTILE_SECRET=1x0000000000000000000000000000000AA
 
 - [ ] **Rotar la key de Composio** (se compartió por chat): crea una nueva en Composio → Claves API, cárgala con los comandos del paso 6, actualiza `.dev.vars` y borra la anterior.
 - [ ] **Reconectar remagencysv@gmail.com en Composio** (Drive y Sheets dan error 401). Luego añade `CA_SHEETS_REM` y `CA_DRIVE_REM` en ambos `wrangler.toml` y vuelve a publicar. Mientras tanto, cada Sheet mensual se comparte con remagencysv como editor y llega un respaldo por correo cada mes.
-- [ ] Logo (`dist/assets/img/logo-dental-gert.svg` y `logo-dental-gert-blanco.svg`) y `og-dental-gert.png` (1200×630).
-- [ ] Fotos: `dist/assets/img/hero.jpg` y `dist/assets/img/servicios/{diagnostico,limpieza,relleno,endodoncia,extraccion,cordales,blanqueamiento}.jpg` (luego `npm run deploy`).
+- [x] Logo (`dist/assets/img/logo-dental-gert.png` y `logo-dental-gert-blanco.png`), favicons del isotipo y `og-dental-gert.png` (1200×630).
+- [x] Fotos: `dist/assets/img/hero.webp` y `dist/assets/img/servicios/<servicio>.webp`. Para cambiar una, reemplaza el archivo (mismo nombre; acepta .avif/.webp/.jpg) y ejecuta `npm run deploy`.
 - [ ] Dirección exacta, formas de pago, feriados (`CLOSED_DATES` en `lib/config.js`), nombre y JVPM del odontólogo.
 - [ ] ID de GA4 en `src/content.mjs` (`BRAND.ga4`) y activar Cloudflare Web Analytics en el panel de Pages.
 - [ ] Revisión legal de `/privacidad/` y `/cookies/`.

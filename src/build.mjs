@@ -56,7 +56,7 @@ const hasLogo = existsSync(join(IMG, 'logo-dental-gert.svg')) || existsSync(join
 const logoSrc = existsSync(join(IMG, 'logo-dental-gert.svg')) ? '/assets/img/logo-dental-gert.svg' : '/assets/img/logo-dental-gert.png'
 const logoDark = existsSync(join(IMG, 'logo-dental-gert-blanco.svg')) ? '/assets/img/logo-dental-gert-blanco.svg' : existsSync(join(IMG, 'logo-dental-gert-blanco.png')) ? '/assets/img/logo-dental-gert-blanco.png' : logoSrc
 const brandMark = (big = false) => hasLogo
-  ? `<img class="logo logo-l" src="${logoSrc}" alt="Dental Gert" width="${big ? 160 : 132}" height="${big ? 48 : 40}"><img class="logo logo-d" src="${logoDark}" alt="" aria-hidden="true" width="${big ? 160 : 132}" height="${big ? 48 : 40}">`
+  ? `<img class="logo logo-l" src="${logoSrc}" alt="Dental Gert" width="${big ? 121 : 101}" height="${big ? 48 : 40}"><img class="logo logo-d" src="${logoDark}" alt="" aria-hidden="true" width="${big ? 121 : 101}" height="${big ? 48 : 40}">`
   : `<span class="wordmark">${icon('tooth')}<span>Dental <b>Gert</b></span></span>` // TODO: reemplazar por el logo (assets/img/logo-dental-gert.svg)
 
 /* ---------- Datos estructurados ---------- */
@@ -64,7 +64,7 @@ const DAY = { Mo: 'Monday', Tu: 'Tuesday', We: 'Wednesday', Th: 'Thursday', Fr: 
 function schema(t) {
   const dentist = {
     '@context': 'https://schema.org', '@type': 'Dentist', '@id': SITE + '/#clinic', name: BRAND.name, slogan: BRAND.tagline[t.lang],
-    url: SITE + t.path, telephone: BRAND.phone, email: BRAND.email, image: SITE + photo('hero', 'hero'), logo: SITE + (hasLogo ? logoSrc : '/assets/img/favicon.svg'),
+    url: SITE + t.path, telephone: BRAND.phone, email: BRAND.email, image: SITE + photo('hero', 'hero'), logo: SITE + (hasLogo ? logoSrc : '/assets/img/isotipo-dental-gert.png'),
     address: { '@type': 'PostalAddress', streetAddress: BRAND.address.street, addressLocality: BRAND.address.city, addressRegion: BRAND.address.region, addressCountry: BRAND.address.country },
     hasMap: BRAND.maps, areaServed: 'San Salvador', priceRange: '$$', // TODO: confirmar rango de precios
     sameAs: [BRAND.fb, BRAND.ig], knowsLanguage: ['es', 'en'],
@@ -85,9 +85,10 @@ function layout(t, { path, title, desc, body, schemas = [], alt, noindex = false
   const i18n = { lang: t.lang, bk: t.bk, hero: t.hero, cookies: t.cookies, services: Object.fromEntries(SERVICES.map((s) => [s.slug, { name: s[t.lang].name, min: s.min }])), wa: BRAND.wa, ga4: BRAND.ga4, turnstile: BRAND.turnstileSiteKey }
   const navLinks = t.nav.map(([h, l]) => `<li><a href="${home ? '' : t.path}${h}">${l}</a></li>`).join('')
   return `<!doctype html>
-<html lang="${t.lang === 'es' ? 'es-SV' : 'en'}" data-theme="light">
+<html lang="${t.lang === 'es' ? 'es-SV' : 'en'}" data-theme="light" translate="no">
 <head>
 <meta charset="utf-8">
+<meta name="google" content="notranslate">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <script>(function(){try{var t=localStorage.getItem('dg-theme');if(!t){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.documentElement.dataset.theme=t;document.documentElement.classList.add('js')}catch(e){}})()</script>
 <title>${esc(title)}</title>
@@ -100,7 +101,9 @@ ${noindex ? '<meta name="robots" content="noindex">' : ''}
 <meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(desc)}"><meta property="og:url" content="${canon}">
 <meta property="og:image" content="${SITE}/assets/img/og-dental-gert.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/assets/img/favicon-192.png" sizes="192x192" type="image/png">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap">
@@ -200,8 +203,8 @@ function bookingForm(t) {
         <label class="fld"><span>${b.nombres}</span><input name="nombres" autocomplete="given-name" required maxlength="60"><em class="field-err" data-err="nombres"></em></label>
         <label class="fld"><span>${b.apellidos}</span><input name="apellidos" autocomplete="family-name" required maxlength="60"><em class="field-err" data-err="apellidos"></em></label>
         <label class="fld only-foreign" hidden><span>${b.pais}</span><select name="pais" disabled required><option value="">${b.paisPh}</option>${countries}</select><em class="field-err" data-err="pais"></em></label>
-        <label class="fld"><span>${b.telefono}</span><span class="tel"><span class="tel-prefix" data-prefix>+503</span><input name="telefono" type="tel" inputmode="tel" autocomplete="tel-national" required placeholder="7739-0440" maxlength="20"></span><em class="field-err" data-err="telefono"></em></label>
-        <label class="fld only-national"><span>${b.dui}</span><input name="dui" inputmode="numeric" required placeholder="${b.duiPh}" maxlength="10"><em class="field-err" data-err="dui"></em></label>
+        <label class="fld"><span>${b.telefono}</span><span class="tel"><span class="tel-prefix" data-prefix>+503</span><input name="telefono" type="tel" inputmode="tel" autocomplete="tel-national" required placeholder="0000 0000" maxlength="20"></span><em class="field-err" data-err="telefono"></em></label>
+        <label class="fld only-national"><span translate="no">${b.dui}</span><input name="dui" inputmode="numeric" required placeholder="${b.duiPh}" maxlength="10"><em class="field-err" data-err="dui"></em></label>
         <label class="fld only-foreign" hidden><span>${b.pasaporte}</span><input name="pasaporte" required disabled maxlength="20" autocapitalize="characters"><em class="field-err" data-err="pasaporte"></em></label>
         <label class="fld span2"><span>${b.correo} <small>(${b.optional})</small></span><input name="correo" type="email" autocomplete="email" maxlength="120"><small class="hint">${b.correoHint}</small><em class="field-err" data-err="correo"></em></label>
         <label class="fld span2"><span>${b.motivo} <small>(${b.optional})</small></span><textarea name="motivo" rows="2" maxlength="100"></textarea><small class="hint"><span>${b.motivoHint}</span><span class="count" aria-live="polite">0/100</span></small></label>
@@ -256,7 +259,7 @@ function home(t) {
     <header class="sec-head"><p class="label">${t.services.label}</p><h2 id="svc-h">${t.services.h2}</h2><p class="lead">${t.services.lead}</p></header>
     <div class="svc-grid">
       ${SERVICES.map((s, i) => `<article class="svc${i === 0 ? ' svc-feature' : ''}" data-reveal>
-        <figure class="svc-img"><img src="${photo('servicios/' + s.slug, s[t.lang].name)}" alt="${esc(s[t.lang].name)} en Dental Gert" loading="lazy" width="800" height="600"></figure>
+        <figure class="svc-img"><img src="${photo('servicios/' + s.slug, s[t.lang].name)}" alt="${esc(s[t.lang].alt)}" loading="lazy" width="800" height="600"></figure>
         <div class="svc-body">
           <span class="svc-ico">${icon(s.icon)}</span>
           <h3>${s[t.lang].name}</h3>
@@ -369,8 +372,7 @@ ${SERVICES.map((s) => `- ${s.es.name} (${duration(s.min)}): ${s.es.desc}`).join(
 ## English
 - ${SITE}/en/
 `)
-out('site.webmanifest', JSON.stringify({ name: 'Dental Gert', short_name: 'Dental Gert', start_url: '/', display: 'browser', background_color: '#EDF4FC', theme_color: '#2974DE', icons: [{ src: '/assets/img/favicon.svg', sizes: 'any', type: 'image/svg+xml' }] }, null, 2))
-out('assets/img/favicon.svg', `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect width="24" height="24" rx="6" fill="#2974DE"/><path d="M8 5.5c-1.8 0-2.8 1.4-2.8 3.1 0 2.1 1 3.1 1.4 5.2.3 1.8.7 4.2 1.7 4.2s1.1-2.4 1.7-3.8c.3-.6 1.1-.6 1.4 0 .6 1.4.7 3.8 1.7 3.8s1.4-2.4 1.7-4.2c.4-2.1 1.4-3.1 1.4-5.2 0-1.7-1-3.1-2.8-3.1-1.4 0-2.1.7-3.5.7S9.4 5.5 8 5.5Z" transform="translate(1.5 0)" fill="none" stroke="#EDF4FC" stroke-width="1.4"/></svg>`)
+out('site.webmanifest', JSON.stringify({ name: 'Dental Gert', short_name: 'Dental Gert', start_url: '/', display: 'browser', background_color: '#EDF4FC', theme_color: '#2974DE', icons: [{ src: '/assets/img/favicon-192.png', sizes: '192x192', type: 'image/png' }, { src: '/assets/img/icon-512.png', sizes: '512x512', type: 'image/png' }] }, null, 2))
 if (!existsSync(join(IMG, 'og-dental-gert.png'))) console.warn('TODO: falta assets/img/og-dental-gert.png (1200x630)')
 out('_headers', `/*
   X-Content-Type-Options: nosniff

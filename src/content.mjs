@@ -27,26 +27,26 @@ export const HOURS = [
 
 export const SERVICES = [
   { slug: 'diagnostico', min: 25, icon: 'search',
-    es: { name: 'Diagnóstico', desc: 'Revisión completa de dientes y encías para detectar a tiempo caries u otros problemas y definir contigo tu plan de tratamiento.' },
-    en: { name: 'Diagnosis', desc: 'A complete check of your teeth and gums to catch cavities and other problems early and agree on your treatment plan.' } },
+    es: { alt: 'Revisión dental con espejo en Dental Gert', name: 'Diagnóstico', desc: 'Revisión completa de dientes y encías para detectar a tiempo caries u otros problemas y definir contigo tu plan de tratamiento.' },
+    en: { alt: 'Dental check-up with a mouth mirror at Dental Gert', name: 'Diagnosis', desc: 'A complete check of your teeth and gums to catch cavities and other problems early and agree on your treatment plan.' } },
   { slug: 'limpieza', min: 25, icon: 'sparkle',
-    es: { name: 'Limpieza dental', desc: 'Retiramos el sarro y la placa que el cepillado no alcanza. Previene el sangrado de encías y el mal aliento.' },
-    en: { name: 'Dental cleaning', desc: 'We remove the tartar and plaque your brush can’t reach, helping prevent bleeding gums and bad breath.' } },
+    es: { alt: 'Limpieza dental con ultrasonido', name: 'Limpieza dental', desc: 'Retiramos el sarro y la placa que el cepillado no alcanza. Previene el sangrado de encías y el mal aliento.' },
+    en: { alt: 'Ultrasonic dental cleaning', name: 'Dental cleaning', desc: 'We remove the tartar and plaque your brush can’t reach, helping prevent bleeding gums and bad breath.' } },
   { slug: 'relleno', min: 40, icon: 'fill',
-    es: { name: 'Relleno dental', desc: 'Restauramos dientes con caries o fracturas con materiales de calidad que se integran de forma natural a tu sonrisa.' },
-    en: { name: 'Dental filling', desc: 'We restore decayed or chipped teeth with quality materials that blend naturally into your smile.' } },
+    es: { alt: 'Aplicación de material en una muela para un relleno dental', name: 'Relleno dental', desc: 'Restauramos dientes con caries o fracturas con materiales de calidad que se integran de forma natural a tu sonrisa.' },
+    en: { alt: 'Applying material to a molar for a dental filling', name: 'Dental filling', desc: 'We restore decayed or chipped teeth with quality materials that blend naturally into your smile.' } },
   { slug: 'endodoncia', min: 60, icon: 'root',
-    es: { name: 'Endodoncia', desc: 'Tratamiento de conducto para salvar un diente con infección o dolor intenso, sin necesidad de extraerlo.' },
-    en: { name: 'Root canal', desc: 'Root canal treatment to save an infected or very painful tooth instead of removing it.' } },
+    es: { alt: 'Muela con caries profunda preparada con aislamiento para endodoncia', name: 'Endodoncia', desc: 'Tratamiento de conducto para salvar un diente con infección o dolor intenso, sin necesidad de extraerlo.' },
+    en: { alt: 'Molar with deep decay isolated for a root canal', name: 'Root canal', desc: 'Root canal treatment to save an infected or very painful tooth instead of removing it.' } },
   { slug: 'extraccion', min: 30, icon: 'extract',
-    es: { name: 'Extracción dental', desc: 'Retiro cuidadoso de piezas que ya no se pueden recuperar, con anestesia local y acompañamiento en tu recuperación.' },
-    en: { name: 'Tooth extraction', desc: 'Careful removal of teeth that can no longer be saved, with local anesthesia and follow-up during recovery.' } },
+    es: { alt: 'Sonrisa con un diente faltante', name: 'Extracción dental', desc: 'Retiro cuidadoso de piezas que ya no se pueden recuperar, con anestesia local y acompañamiento en tu recuperación.' },
+    en: { alt: 'Smile with a missing tooth', name: 'Tooth extraction', desc: 'Careful removal of teeth that can no longer be saved, with local anesthesia and follow-up during recovery.' } },
   { slug: 'cordales', min: 75, icon: 'wisdom',
-    es: { name: 'Cirugía de cordales', desc: 'Extracción de muelas del juicio que duelen, no tienen espacio o crecen inclinadas, con un procedimiento planificado.' },
-    en: { name: 'Wisdom tooth surgery', desc: 'Planned removal of wisdom teeth that hurt, lack space or grow at an angle.' } },
+    es: { alt: 'Paciente con dolor en la mandíbula por las muelas del juicio', name: 'Cirugía de cordales', desc: 'Extracción de muelas del juicio que duelen, no tienen espacio o crecen inclinadas, con un procedimiento planificado.' },
+    en: { alt: 'Patient with jaw pain from wisdom teeth', name: 'Wisdom tooth surgery', desc: 'Planned removal of wisdom teeth that hurt, lack space or grow at an angle.' } },
   { slug: 'blanqueamiento', min: 75, icon: 'shine',
-    es: { name: 'Blanqueamiento dental', desc: 'Aclara el tono de tus dientes de forma segura y con supervisión profesional, para una sonrisa más luminosa.' },
-    en: { name: 'Teeth whitening', desc: 'Safely brightens the shade of your teeth under professional supervision for a more radiant smile.' } },
+    es: { alt: 'Blanqueamiento dental con lámpara de luz azul', name: 'Blanqueamiento dental', desc: 'Aclara el tono de tus dientes de forma segura y con supervisión profesional, para una sonrisa más luminosa.' },
+    en: { alt: 'Teeth whitening with a blue light lamp', name: 'Teeth whitening', desc: 'Safely brightens the shade of your teeth under professional supervision for a more radiant smile.' } },
 ]
 
 export const COUNTRIES = [
@@ -77,7 +77,7 @@ export const T = {
       wa: 'Escríbenos por WhatsApp',
       trust: ['Más de 6 años cuidando sonrisas', 'Atención para toda la familia', 'Materiales de calidad'],
       open: 'Abierto ahora', closed: 'Cerrado ahora', closes: 'cierra', opens: 'abre',
-      photoAlt: 'Consultorio de Dental Gert en Colonia Médica',
+      photoAlt: 'Piezas dentales brillantes sobre fondo negro, Dental Gert',
     },
     bk: {
       title: 'Agenda tu cita', close: 'Cerrar formulario',
@@ -88,7 +88,7 @@ export const T = {
       time: 'Hora', timePh: 'Elige una hora', morning: 'Mañana', afternoon: 'Tarde',
       noSlots: 'No quedan horarios este día. Prueba otra fecha.', pickDateFirst: 'Primero elige una fecha en el calendario.', loading: 'Consultando horarios…',
       residence: '¿Dónde resides?', national: 'Salvadoreño o residente', foreign: 'Extranjero',
-      nombres: 'Nombres', apellidos: 'Apellidos', telefono: 'Número de teléfono', dui: 'DUI', duiPh: '00000000-0',
+      nombres: 'Nombres', apellidos: 'Apellidos', telefono: 'Número de teléfono', dui: 'DUI (Documento Único de Identidad)', duiPh: '00000000-0',
       pais: 'País', paisPh: 'Elige tu país', pasaporte: 'Número de pasaporte',
       correo: 'Correo', correoHint: 'Opcional. Recibe tu confirmación y la invitación a tu Google Calendar.',
       motivo: 'Motivo de la cita', motivoHint: 'Opcional. Cuéntanos brevemente qué sientes.',
@@ -100,7 +100,7 @@ export const T = {
         service: 'Elige el servicio que necesitas.', date: 'Elige una fecha disponible.', time: 'Elige una hora disponible.',
         nombres: 'Escribe tus nombres.', apellidos: 'Escribe tus apellidos.',
         telefono: 'Revisa tu número: 8 dígitos que empiezan con 2, 6 o 7.', telefonoIntl: 'Revisa tu número con el código de tu país.',
-        dui: 'Revisa tu DUI: 8 dígitos, guion y dígito verificador.', pasaporte: 'Revisa tu número de pasaporte.', pais: 'Elige tu país.',
+        dui: 'Revisa tu DUI (Documento Único de Identidad): 8 dígitos, guion y dígito verificador.', pasaporte: 'Revisa tu número de pasaporte.', pais: 'Elige tu país.',
         correo: 'Revisa tu correo, por ejemplo nombre@gmail.com.', consentimiento: 'Necesitamos tu autorización para agendar.',
         slot_taken: 'Esa hora acaba de reservarse. Elige otra, tus datos siguen aquí.', captcha: 'No pudimos verificar el envío. Inténtalo de nuevo.',
         server: 'Algo falló de nuestro lado. Inténtalo de nuevo o escríbenos por WhatsApp.', network: 'Sin conexión. Revisa tu internet e inténtalo de nuevo.',
@@ -174,7 +174,7 @@ export const T = {
       wa: 'Message us on WhatsApp',
       trust: ['Over 6 years caring for smiles', 'Care for the whole family', 'Quality materials'],
       open: 'Open now', closed: 'Closed now', closes: 'closes', opens: 'opens',
-      photoAlt: 'Dental Gert office in Colonia Médica',
+      photoAlt: 'Glossy dental crowns on a black background, Dental Gert',
     },
     bk: {
       title: 'Book your appointment', close: 'Close form',
@@ -185,7 +185,7 @@ export const T = {
       time: 'Time', timePh: 'Choose a time', morning: 'Morning', afternoon: 'Afternoon',
       noSlots: 'No times left on this day. Try another date.', pickDateFirst: 'First choose a date on the calendar.', loading: 'Checking availability…',
       residence: 'Where do you live?', national: 'Salvadoran or resident', foreign: 'Foreign visitor',
-      nombres: 'First names', apellidos: 'Last names', telefono: 'Phone number', dui: 'DUI', duiPh: '00000000-0',
+      nombres: 'First names', apellidos: 'Last names', telefono: 'Phone number', dui: 'DUI (Documento Único de Identidad)', duiPh: '00000000-0',
       pais: 'Country', paisPh: 'Choose your country', pasaporte: 'Passport number',
       correo: 'Email', correoHint: 'Optional. Get your confirmation and a Google Calendar invitation.',
       motivo: 'Reason for your visit', motivoHint: 'Optional. Briefly tell us what you feel.',
@@ -197,7 +197,7 @@ export const T = {
         service: 'Choose the service you need.', date: 'Choose an available date.', time: 'Choose an available time.',
         nombres: 'Enter your first names.', apellidos: 'Enter your last names.',
         telefono: 'Check your number: 8 digits starting with 2, 6 or 7.', telefonoIntl: 'Check your number including your country code.',
-        dui: 'Check your DUI: 8 digits, hyphen and check digit.', pasaporte: 'Check your passport number.', pais: 'Choose your country.',
+        dui: 'Check your DUI (Documento Único de Identidad): 8 digits, hyphen and check digit.', pasaporte: 'Check your passport number.', pais: 'Choose your country.',
         correo: 'Check your email, e.g. name@gmail.com.', consentimiento: 'We need your consent to book.',
         slot_taken: 'That time was just booked. Pick another one, your details are still here.', captcha: 'We couldn’t verify the request. Please try again.',
         server: 'Something went wrong on our side. Try again or message us on WhatsApp.', network: 'You seem to be offline. Check your connection and try again.',
@@ -230,7 +230,7 @@ export const T = {
         ['How do I book an appointment?', 'Choose the service, date and time in the form on this page and fill in your details. Your appointment is confirmed instantly and, if you leave your email, you get a Google Calendar invitation. You can also message us on WhatsApp at +503 7739 0440.'],
         ['Can I change or cancel my appointment?', 'Yes. Message us on WhatsApp at +503 7739 0440 as early as possible so we can offer the time to another patient.'],
         ['I’m in pain, can you see me soon?', 'Message us on WhatsApp describing how you feel and we’ll find the first available slot. Online you can book as soon as two hours ahead.'],
-        ['What should I bring to my first visit?', 'Your ID or passport, a list of medications you take and, if you have them, X-rays or reports from previous treatments. Please arrive 10 minutes early.'],
+        ['What should I bring to my first visit?', 'Your DUI (Documento Único de Identidad) or passport, a list of medications you take and, if you have them, X-rays or reports from previous treatments. Please arrive 10 minutes early.'],
         ['Do you treat children?', 'Yes, we offer dental care for the whole family.'],
         ['Do you treat international patients?', 'Yes. In the form choose “Foreign visitor” and enter your passport and phone number with your country code.'],
         ['How long does each treatment take?', 'Diagnosis and cleaning: 25 min. Filling: 40 min. Extraction: 30 min. Root canal: 1 h. Wisdom tooth surgery and whitening: 1 h 15 min. Times are approximate per visit.'],
@@ -270,7 +270,7 @@ export const LEGAL = {
 <h2>Base legal</h2><p>Tratamos tus datos con tu consentimiento, que otorgas al marcar la casilla del formulario, conforme a la normativa salvadoreña de protección de datos personales.</p>` },
     en: { path: '/en/privacy/', title: 'Privacy policy | Dental Gert', h1: 'Privacy policy', html: `
 <p>Dental Gert ("the clinic"), located in Colonia Médica, San Salvador, is responsible for the personal data you share when booking on this site. Contact: <a href="mailto:dentalgert@gmail.com">dentalgert@gmail.com</a> · +503 7739 0440.</p>
-<h2>Data we collect</h2><p>First and last names, phone number, DUI (or passport and country for international patients), email and reason for visit (optional), plus the chosen service, date and time.</p>
+<h2>Data we collect</h2><p>First and last names, phone number, DUI (Documento Único de Identidad) or passport and country for international patients, email and reason for visit (optional), plus the chosen service, date and time.</p>
 <h2>How we use it</h2><p>Only to schedule, confirm and follow up on your appointment, identify you as a patient and contact you. We never sell or share your data for marketing.</p>
 <h2>Where it is stored</h2><p>Your appointment is recorded in the clinic’s Google Calendar and Google Drive spreadsheets, with a backup managed by REM Agency (remagencysv@gmail.com), the site’s technical provider. The booking system (Cloudflare) deletes your personal data 30 days after the appointment.</p>
 <h2>Your rights</h2><p>You can request access, correction or deletion of your data by writing to <a href="mailto:dentalgert@gmail.com">dentalgert@gmail.com</a>.</p>

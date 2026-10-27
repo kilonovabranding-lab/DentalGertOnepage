@@ -180,7 +180,7 @@
     const foreign = form.residencia.value === 'extranjero'
     $$('.only-foreign').forEach((el) => { el.hidden = !foreign; $$('input, select', el).forEach((i) => (i.disabled = !foreign)) })
     $$('.only-national').forEach((el) => { el.hidden = foreign; $$('input', el).forEach((i) => (i.disabled = foreign)) })
-    tel.placeholder = foreign ? '555 123 4567' : '7739-0440'
+    tel.placeholder = foreign ? '555 123 4567' : '0000 0000'
     tel.autocomplete = foreign ? 'tel' : 'tel-national'
     prefix.textContent = foreign ? (form.pais.selectedOptions[0]?.dataset.dial || '+') : '+503'
     if (anim()) gsap.from($$('.only-foreign:not([hidden]), .only-national:not([hidden])'), { opacity: 0, y: 8, duration: .4, ease: 'power2.out' })
@@ -190,7 +190,7 @@
 
   /* ---------- Máscaras y contador ---------- */
   form.dui.addEventListener('input', () => { const d = form.dui.value.replace(/\D/g, '').slice(0, 9); form.dui.value = d.length > 8 ? `${d.slice(0, 8)}-${d.slice(8)}` : d })
-  tel.addEventListener('input', () => { if (form.residencia.value !== 'extranjero') { const d = tel.value.replace(/\D/g, '').slice(0, 8); tel.value = d.length > 4 ? `${d.slice(0, 4)}-${d.slice(4)}` : d } })
+  tel.addEventListener('input', () => { if (form.residencia.value !== 'extranjero') { const d = tel.value.replace(/\D/g, '').slice(0, 8); tel.value = d.length > 4 ? `${d.slice(0, 4)} ${d.slice(4)}` : d } })
   form.motivo.addEventListener('input', () => { $('.count').textContent = `${form.motivo.value.length}/100` })
   form.addEventListener('input', (e) => { if (e.target.name) clearErr(e.target.name); progress(); saveDraft() })
 
@@ -247,7 +247,7 @@
 
   /* ---------- Turnstile (antispam invisible) ---------- */
   function mountTurnstile() {
-    const go = () => { if (state.ts === null && window.turnstile) state.ts = turnstile.render('#ts', { sitekey: I.turnstile, size: 'flexible', appearance: 'interaction-only', language: I.lang }) }
+    const go = () => { if (state.ts === null && window.turnstile) state.ts = turnstile.render('#ts', { sitekey: I.turnstile, size: 'flexible', appearance: 'interaction-only', language: I.lang, 'error-callback': () => true }) } // sin token el servidor responde 403 y se muestra B.err.captcha
     if (window.turnstile) go(); else { const iv = setInterval(() => { if (window.turnstile) { clearInterval(iv); go() } }, 300); setTimeout(() => clearInterval(iv), 15000) }
   }
   const tsToken = () => (window.turnstile && state.ts !== null ? turnstile.getResponse(state.ts) : '')
