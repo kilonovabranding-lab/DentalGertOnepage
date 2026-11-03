@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "node src/build.mjs",
-    "test": "node --test test/",
+    "test": "node --test \"test/*.test.mjs\"",
     "dev": "node src/build.mjs && wrangler d1 migrations apply dental-gert --local && wrangler pages dev dist --port 8788",
     "deploy": "node src/build.mjs && wrangler pages deploy dist --project-name dental-gert --branch main",
     "deploy:cron": "cd cron && wrangler deploy",

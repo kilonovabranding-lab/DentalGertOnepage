@@ -45,6 +45,9 @@ export const SERVICES = [
   { slug: 'cordales', min: 75, icon: 'wisdom',
     es: { alt: 'Paciente con dolor en la mandíbula por las muelas del juicio', name: 'Cirugía de cordales', desc: 'Extracción de muelas del juicio que duelen, no tienen espacio o crecen inclinadas, con un procedimiento planificado.' },
     en: { alt: 'Patient with jaw pain from wisdom teeth', name: 'Wisdom tooth surgery', desc: 'Planned removal of wisdom teeth that hurt, lack space or grow at an angle.' } },
+  { slug: 'implantes', min: 90, icon: 'implant',
+    es: { alt: 'Implante dental de titanio con su corona sobre la encía', name: 'Implantes dentales', desc: 'Reemplazamos dientes perdidos con un implante de titanio y una corona a la medida, que se ven y funcionan como un diente natural.' },
+    en: { alt: 'Titanium dental implant with its crown above the gum', name: 'Dental implants', desc: 'We replace missing teeth with a titanium implant and a custom crown that look and work like a natural tooth.' } },
   { slug: 'blanqueamiento', min: 75, icon: 'shine',
     es: { alt: 'Blanqueamiento dental con lámpara de luz azul', name: 'Blanqueamiento dental', desc: 'Aclara el tono de tus dientes de forma segura y con supervisión profesional, para una sonrisa más luminosa.' },
     en: { alt: 'Teeth whitening with a blue light lamp', name: 'Teeth whitening', desc: 'Safely brightens the shade of your teeth under professional supervision for a more radiant smile.' } },
@@ -66,7 +69,7 @@ export const T = {
   es: {
     lang: 'es', locale: 'es_SV', hreflang: 'es-SV', path: '/', other: '/en/', otherLabel: 'EN', otherName: 'English',
     title: 'Dental Gert | Clínica dental en Colonia Médica, San Salvador',
-    desc: 'Clínica dental en Colonia Médica, San Salvador: diagnóstico, limpiezas, rellenos, endodoncias, extracciones, cordales y blanqueamiento. Agenda en línea.',
+    desc: 'Clínica dental en Colonia Médica, San Salvador: diagnóstico, limpiezas, rellenos, endodoncias, extracciones, cordales, implantes y blanqueamiento.',
     skip: 'Saltar al contenido',
     nav: [['#servicios', 'Servicios'], ['#quienes-somos', 'Quiénes somos'], ['#contacto', 'Contáctanos']],
     cta: 'Agenda tu cita',
@@ -86,8 +89,12 @@ export const T = {
       weekdays: ['Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá', 'Do'],
       time: 'Hora', timePh: 'Elige una hora', morning: 'Mañana', afternoon: 'Tarde',
       noSlots: 'No quedan horarios este día. Prueba otra fecha.', pickDateFirst: 'Primero elige una fecha en el calendario.', loading: 'Consultando horarios…',
-      residence: '¿Dónde resides?', national: 'Salvadoreño o residente', foreign: 'Extranjero',
-      nombres: 'Nombres', apellidos: 'Apellidos', telefono: 'Número de teléfono', dui: 'DUI (Documento Único de Identidad)', duiPh: '00000000-0',
+      residence: '¿Dónde resides?', national: 'Salvadoreño', foreign: 'Extranjero',
+      nombres: 'Nombres', apellidos: 'Apellidos',
+      genero: 'Género', masculino: 'Masculino', femenino: 'Femenino',
+      nacimiento: 'Fecha de nacimiento', dia: 'Día', mes: 'Mes', anio: 'Año',
+      meses: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+      telefono: 'Número de teléfono', dui: 'DUI (Documento Único de Identidad)', duiPh: '00000000-0',
       pais: 'País', paisPh: 'Elige tu país', pasaporte: 'Número de pasaporte',
       correo: 'Correo', correoHint: 'Opcional. Recibe tu confirmación y la invitación a tu Google Calendar.',
       motivo: 'Motivo de la cita', motivoHint: 'Opcional. Cuéntanos brevemente qué sientes.',
@@ -98,6 +105,7 @@ export const T = {
       err: {
         service: 'Elige el servicio que necesitas.', date: 'Elige una fecha disponible.', time: 'Elige una hora disponible.',
         nombres: 'Escribe tus nombres.', apellidos: 'Escribe tus apellidos.',
+        genero: 'Elige tu género.', fecha_nacimiento: 'Revisa tu fecha de nacimiento: elige un día, mes y año válidos.',
         telefono: 'Revisa tu número: 8 dígitos que empiezan con 2, 6 o 7.', telefonoIntl: 'Revisa tu número con el código de tu país.',
         dui: 'Revisa tu DUI (Documento Único de Identidad): 8 dígitos, guion y dígito verificador.', pasaporte: 'Revisa tu número de pasaporte.', pais: 'Elige tu país.',
         correo: 'Revisa tu correo, por ejemplo nombre@gmail.com.', consentimiento: 'Necesitamos tu autorización para agendar.',
@@ -135,7 +143,7 @@ export const T = {
         ['¿Qué debo llevar a mi primera cita?', 'Tu DUI o pasaporte, la lista de medicamentos que tomas y, si los tienes, radiografías o informes de tratamientos anteriores. Te recomendamos llegar 10 minutos antes.'],
         ['¿Atienden a niños?', 'Sí, ofrecemos atención odontológica para toda la familia.'],
         ['¿Atienden a pacientes extranjeros?', 'Sí. En el formulario elige “Extranjero” e ingresa tu pasaporte y tu número con el código de tu país.'],
-        ['¿Cuánto dura cada tratamiento?', 'Diagnóstico y limpieza dental: 25 min. Relleno: 40 min. Extracción: 30 min. Endodoncia: 1 h. Cirugía de cordales y blanqueamiento: 1 h 15 min. Son tiempos aproximados por cita.'],
+        ['¿Cuánto dura cada tratamiento?', 'Diagnóstico y limpieza dental: 25 min. Relleno: 40 min. Extracción: 30 min. Endodoncia: 1 h. Cirugía de cordales y blanqueamiento: 1 h 15 min. Implantes: 1 h 30 min. Son tiempos aproximados por cita.'],
         ['¿Qué formas de pago aceptan?', 'Puedes pagar en la clínica en efectivo o con tarjeta de crédito o débito (POS). No recibimos pagos en línea: agendar tu cita no tiene costo.'],
         ['¿Dónde están ubicados?', 'En Pasaje Dr. Mariano Samayoa, edificio Betesda, Colonia Médica, San Salvador. Busca “Dental Gert” en Google Maps o usa el enlace “Cómo llegar” de esta página.'],
         ['¿Cuál es su horario?', 'Lunes a viernes de 8:00 a. m. a 12:00 m. d. y de 1:30 p. m. a 4:30 p. m. Sábados de 8:00 a. m. a 1:00 p. m. Domingos cerrado.'],
@@ -162,7 +170,7 @@ export const T = {
   en: {
     lang: 'en', locale: 'en_US', hreflang: 'en', path: '/en/', other: '/', otherLabel: 'ES', otherName: 'Español',
     title: 'Dental Gert | Dental clinic in Colonia Médica, San Salvador',
-    desc: 'Dental clinic in Colonia Médica, San Salvador: check-ups, cleanings, fillings, root canals, extractions, wisdom teeth and whitening. Book online.',
+    desc: 'Dental clinic in Colonia Médica, San Salvador: check-ups, cleanings, fillings, root canals, extractions, wisdom teeth, implants and whitening.',
     skip: 'Skip to content',
     nav: [['#servicios', 'Services'], ['#quienes-somos', 'About us'], ['#contacto', 'Contact']],
     cta: 'Book your appointment',
@@ -182,8 +190,12 @@ export const T = {
       weekdays: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
       time: 'Time', timePh: 'Choose a time', morning: 'Morning', afternoon: 'Afternoon',
       noSlots: 'No times left on this day. Try another date.', pickDateFirst: 'First choose a date on the calendar.', loading: 'Checking availability…',
-      residence: 'Where do you live?', national: 'Salvadoran or resident', foreign: 'Foreign visitor',
-      nombres: 'First names', apellidos: 'Last names', telefono: 'Phone number', dui: 'DUI (Documento Único de Identidad)', duiPh: '00000000-0',
+      residence: 'Where do you live?', national: 'Salvadoran', foreign: 'Foreign visitor',
+      nombres: 'First names', apellidos: 'Last names',
+      genero: 'Gender', masculino: 'Male', femenino: 'Female',
+      nacimiento: 'Date of birth', dia: 'Day', mes: 'Month', anio: 'Year',
+      meses: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      telefono: 'Phone number', dui: 'DUI (Documento Único de Identidad)', duiPh: '00000000-0',
       pais: 'Country', paisPh: 'Choose your country', pasaporte: 'Passport number',
       correo: 'Email', correoHint: 'Optional. Get your confirmation and a Google Calendar invitation.',
       motivo: 'Reason for your visit', motivoHint: 'Optional. Briefly tell us what you feel.',
@@ -194,6 +206,7 @@ export const T = {
       err: {
         service: 'Choose the service you need.', date: 'Choose an available date.', time: 'Choose an available time.',
         nombres: 'Enter your first names.', apellidos: 'Enter your last names.',
+        genero: 'Choose your gender.', fecha_nacimiento: 'Check your date of birth: choose a valid day, month and year.',
         telefono: 'Check your number: 8 digits starting with 2, 6 or 7.', telefonoIntl: 'Check your number including your country code.',
         dui: 'Check your DUI (Documento Único de Identidad): 8 digits, hyphen and check digit.', pasaporte: 'Check your passport number.', pais: 'Choose your country.',
         correo: 'Check your email, e.g. name@gmail.com.', consentimiento: 'We need your consent to book.',
@@ -231,7 +244,7 @@ export const T = {
         ['What should I bring to my first visit?', 'Your DUI (Documento Único de Identidad) or passport, a list of medications you take and, if you have them, X-rays or reports from previous treatments. Please arrive 10 minutes early.'],
         ['Do you treat children?', 'Yes, we offer dental care for the whole family.'],
         ['Do you treat international patients?', 'Yes. In the form choose “Foreign visitor” and enter your passport and phone number with your country code.'],
-        ['How long does each treatment take?', 'Diagnosis and cleaning: 25 min. Filling: 40 min. Extraction: 30 min. Root canal: 1 h. Wisdom tooth surgery and whitening: 1 h 15 min. Times are approximate per visit.'],
+        ['How long does each treatment take?', 'Diagnosis and cleaning: 25 min. Filling: 40 min. Extraction: 30 min. Root canal: 1 h. Wisdom tooth surgery and whitening: 1 h 15 min. Implants: 1 h 30 min. Times are approximate per visit.'],
         ['Which payment methods do you accept?', 'You can pay at the clinic in cash or by credit or debit card (POS). We don’t take online payments: booking your appointment is free.'],
         ['Where are you located?', 'At Pasaje Dr. Mariano Samayoa, edificio Betesda, Colonia Médica, San Salvador, El Salvador. Search “Dental Gert” on Google Maps or use the “Get directions” link on this page.'],
         ['What are your opening hours?', 'Monday to Friday 8:00 am – 12:00 pm and 1:30 pm – 4:30 pm. Saturday 8:00 am – 1:00 pm. Closed on Sundays.'],
@@ -262,14 +275,14 @@ export const LEGAL = {
   privacy: {
     es: { path: '/privacidad/', title: 'Política de privacidad | Dental Gert', h1: 'Política de privacidad', html: `
 <p>Dental Gert ("la clínica"), ubicada en Colonia Médica, San Salvador, es responsable de los datos personales que nos compartes al agendar una cita en este sitio. Contacto: <a href="mailto:dentalgert@gmail.com">dentalgert@gmail.com</a> · 7739 0440.</p>
-<h2>Qué datos recogemos</h2><p>Nombres, apellidos, número de teléfono, DUI (o pasaporte y país si eres extranjero), correo electrónico y motivo de la cita (opcionales), además del servicio, la fecha y la hora elegidos.</p>
+<h2>Qué datos recogemos</h2><p>Nombres, apellidos, género, fecha de nacimiento, número de teléfono, DUI (o pasaporte y país si eres extranjero), correo electrónico y motivo de la cita (opcionales), además del servicio, la fecha y la hora elegidos.</p>
 <h2>Para qué los usamos</h2><p>Únicamente para agendar, confirmar y dar seguimiento a tu cita, identificarte como paciente y comunicarnos contigo. No vendemos ni cedemos tus datos con fines comerciales.</p>
 <h2>Dónde se guardan</h2><p>Tu cita se registra en el Google Calendar y en hojas de cálculo de Google Drive de la clínica, con una copia de respaldo administrada por REM Agency (remagencysv@gmail.com), encargada técnica del sitio. El sistema de reservas (Cloudflare) borra tus datos personales 30 días después de la cita.</p>
 <h2>Tus derechos</h2><p>Puedes pedir acceso, corrección o eliminación de tus datos escribiendo a <a href="mailto:dentalgert@gmail.com">dentalgert@gmail.com</a>.</p>
 <h2>Base legal</h2><p>Tratamos tus datos con tu consentimiento, que otorgas al marcar la casilla del formulario, conforme a la normativa salvadoreña de protección de datos personales.</p>` },
     en: { path: '/en/privacy/', title: 'Privacy policy | Dental Gert', h1: 'Privacy policy', html: `
 <p>Dental Gert ("the clinic"), located in Colonia Médica, San Salvador, is responsible for the personal data you share when booking on this site. Contact: <a href="mailto:dentalgert@gmail.com">dentalgert@gmail.com</a> · +503 7739 0440.</p>
-<h2>Data we collect</h2><p>First and last names, phone number, DUI (Documento Único de Identidad) or passport and country for international patients, email and reason for visit (optional), plus the chosen service, date and time.</p>
+<h2>Data we collect</h2><p>First and last names, gender, date of birth, phone number, DUI (Documento Único de Identidad) or passport and country for international patients, email and reason for visit (optional), plus the chosen service, date and time.</p>
 <h2>How we use it</h2><p>Only to schedule, confirm and follow up on your appointment, identify you as a patient and contact you. We never sell or share your data for marketing.</p>
 <h2>Where it is stored</h2><p>Your appointment is recorded in the clinic’s Google Calendar and Google Drive spreadsheets, with a backup managed by REM Agency (remagencysv@gmail.com), the site’s technical provider. The booking system (Cloudflare) deletes your personal data 30 days after the appointment.</p>
 <h2>Your rights</h2><p>You can request access, correction or deletion of your data by writing to <a href="mailto:dentalgert@gmail.com">dentalgert@gmail.com</a>.</p>

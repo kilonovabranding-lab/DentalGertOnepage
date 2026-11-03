@@ -20,6 +20,7 @@ const ICONS = {
   root: P('M7 3c-2.5 0-4 2-4 4.5 0 3 1.5 4.5 2 7.5.4 2.6 1 6 2.5 6s1.6-3.5 2.5-5.5c.4-.9 1.6-.9 2 0 .9 2 1 5.5 2.5 5.5s2.1-3.4 2.5-6c.5-3 2-4.5 2-7.5C21 5 19.5 3 17 3c-2 0-3 1-5 1S9 3 7 3Z') + P('M10 9v5.5M14 9v5.5'),
   extract: P('M8 9c-2 0-3 1.5-3 3.2 0 2 1 3 1.4 5 .3 1.8.7 3.8 1.7 3.8s1.1-2 1.7-3.4c.3-.6 1.1-.6 1.4 0 .6 1.4.7 3.4 1.7 3.4s1.4-2 1.7-3.8c.4-2 1.4-3 1.4-5C16 10.5 15 9 13 9c-1.4 0-2 .6-2.5.6S9.4 9 8 9Z') + P('M10.5 6V2M7.5 4l3-2 3 2'),
   wisdom: P('M4 6c0-1.7 1.3-3 3-3 1.6 0 2.4.8 5 .8s3.4-.8 5-.8c1.7 0 3 1.3 3 3 0 4-2 5-2.5 9-.3 2.6-.8 6-2.3 6-1.4 0-1.5-3.5-2.4-5.5-.3-.7-1.3-.7-1.6 0C9.3 17.5 9.2 21 7.8 21c-1.5 0-2-3.4-2.3-6C5 11 4 10 4 6Z') + P('M8 7.5h8'),
+  implant: P('M7.5 2.5c1.5 0 2.5.6 4.5.6s3-.6 4.5-.6c1.6 0 2.5 1.2 2.5 2.7 0 1.5-.6 2.5-1.1 3.3H6.1C5.6 7.7 5 6.7 5 5.2c0-1.5.9-2.7 2.5-2.7Z') + P('M9.5 8.5v2.5h5V8.5') + P('M10 11v6.5l2 3 2-3V11') + P('M8.5 13.2h7M8.5 15.7h7'),
   shine: P('M7 3c-2.5 0-4 2-4 4.5 0 3 1.5 4.5 2 7.5.4 2.6 1 6 2.5 6s1.6-3.5 2.5-5.5c.4-.9 1.6-.9 2 0 .9 2 1 5.5 2.5 5.5s2.1-3.4 2.5-6c.5-3 2-4.5 2-7.5C21 5 19.5 3 17 3c-2 0-3 1-5 1S9 3 7 3Z') + P('M20 1v3M18.5 2.5h3M2 13l-1 1'),
   heart: P('M12 20s-7.5-4.6-7.5-10A4.3 4.3 0 0 1 12 7.4 4.3 4.3 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10Z'),
   user: P('M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z') + P('M4.5 20.5c1.2-3.6 4-5.5 7.5-5.5s6.3 1.9 7.5 5.5'),
@@ -168,6 +169,11 @@ function bookingForm(t) {
   const b = t.bk
   const svc = SERVICES.map((s) => `<label class="opt"><input type="radio" name="service" value="${s.slug}" required><span class="opt-ico">${icon(s.icon)}</span><span class="opt-name">${s[t.lang].name}</span><span class="opt-dur">${duration(s.min)}</span></label>`).join('')
   const countries = COUNTRIES.map(([c, d, es, en]) => `<option value="${c}" data-dial="${d}">${t.lang === 'es' ? es : en} (${d})</option>`).join('')
+  const pad2 = (n) => String(n).padStart(2, '0')
+  const year = new Date().getFullYear()
+  const days = Array.from({ length: 31 }, (_, i) => `<option value="${pad2(i + 1)}">${i + 1}</option>`).join('')
+  const months = b.meses.map((m, i) => `<option value="${pad2(i + 1)}">${m}</option>`).join('')
+  const years = Array.from({ length: 111 }, (_, i) => `<option value="${year - i}">${year - i}</option>`).join('') // MAX_AGE_YEARS de lib/config.js
   return `<section class="booking" id="agendar" aria-labelledby="bk-title" data-state="closed">
   <div class="bk-inner">
   <div class="bk-head">
@@ -203,6 +209,10 @@ function bookingForm(t) {
       <div class="grid2">
         <label class="fld"><span>${b.nombres}</span><input name="nombres" autocomplete="given-name" required maxlength="60"><em class="field-err" data-err="nombres"></em></label>
         <label class="fld"><span>${b.apellidos}</span><input name="apellidos" autocomplete="family-name" required maxlength="60"><em class="field-err" data-err="apellidos"></em></label>
+        <div class="span2 gf">
+          <div class="fld gf-g" role="group" aria-labelledby="lbl-genero"><span id="lbl-genero">${b.genero}</span><div class="seg seg-fld" role="radiogroup" aria-labelledby="lbl-genero" data-group="genero"><label><input type="radio" name="genero" value="masculino" required><span>${b.masculino}</span></label><label><input type="radio" name="genero" value="femenino"><span>${b.femenino}</span></label></div><em class="field-err" data-err="genero"></em></div>
+          <div class="fld gf-f" role="group" aria-labelledby="lbl-nac"><span id="lbl-nac">${b.nacimiento}</span><div class="dob" data-group="fecha_nacimiento"><select name="nac_dia" autocomplete="bday-day" required aria-label="${b.dia}"><option value="">${b.dia}</option>${days}</select><select name="nac_mes" autocomplete="bday-month" required aria-label="${b.mes}"><option value="">${b.mes}</option>${months}</select><select name="nac_anio" autocomplete="bday-year" required aria-label="${b.anio}"><option value="">${b.anio}</option>${years}</select></div><em class="field-err" data-err="fecha_nacimiento"></em></div>
+        </div>
         <label class="fld only-foreign" hidden><span>${b.pais}</span><select name="pais" disabled required><option value="">${b.paisPh}</option>${countries}</select><em class="field-err" data-err="pais"></em></label>
         <label class="fld"><span>${b.telefono}</span><span class="tel"><span class="tel-prefix" data-prefix>+503</span><input name="telefono" type="tel" inputmode="tel" autocomplete="tel-national" required placeholder="0000 0000" maxlength="20"></span><em class="field-err" data-err="telefono"></em></label>
         <label class="fld only-national"><span translate="no">${b.dui}</span><input name="dui" inputmode="numeric" required placeholder="${b.duiPh}" maxlength="10"><em class="field-err" data-err="dui"></em></label>
@@ -325,7 +335,7 @@ function legalPage(t, kind) {
   const L = LEGAL[kind][t.lang]
   const other = LEGAL[kind][t.lang === 'es' ? 'en' : 'es']
   const tt = { ...t, other: other.path }
-  const body = `<section class="sec legal"><div class="wrap narrow"><p class="label"><a href="${t.path}">← Dental Gert</a></p><h1>${L.h1}</h1>${L.html}<p class="muted small">${t.lang === 'es' ? 'Última actualización' : 'Last updated'}: 2026-10-26</p></div></section>`
+  const body = `<section class="sec legal"><div class="wrap narrow"><p class="label"><a href="${t.path}">← Dental Gert</a></p><h1>${L.h1}</h1>${L.html}<p class="muted small">${t.lang === 'es' ? 'Última actualización' : 'Last updated'}: 2026-11-02</p></div></section>`
   return layout(tt, { path: L.path, title: L.title, desc: `${L.h1} — Dental Gert, Colonia Médica, San Salvador.`, body, alt: { es: LEGAL[kind].es.path, en: LEGAL[kind].en.path } })
 }
 

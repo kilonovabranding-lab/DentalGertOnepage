@@ -66,7 +66,7 @@
   /* ---------- Progreso (etiquetas, sin números) ---------- */
   const progress = () => {
     const f = new FormData(form)
-    const who = f.get('nombres') && f.get('apellidos') && f.get('telefono')
+    const who = f.get('nombres') && f.get('apellidos') && f.get('genero') && birth() && f.get('telefono')
     ;[state.service, state.date, state.time, who].forEach((ok, i) => $(`.bk-progress [data-step="${i}"]`).classList.toggle('done', !!ok))
   }
   const setVal = (k, txt) => { const el = $(`[data-val="${k}"]`); el.textContent = txt || { service: B.servicePh, date: B.datePh, time: B.timePh }[k]; el.classList.toggle('set', !!txt) }
@@ -196,13 +196,27 @@
 
   /* ---------- Validación (espejo de lib/validate.js) ---------- */
   const validDUI = (v) => { const m = /^(\d{8})-?(\d)$/.exec(v.trim()); if (!m) return false; const s = [...m[1]].reduce((a, d, i) => a + d * (9 - i), 0); return (10 - (s % 10)) % 10 === +m[2] }
+  // Fecha de nacimiento desde las tres listas → 'YYYY-MM-DD' ('' si falta alguna)
+  function birth() { return form.nac_anio.value && form.nac_mes.value && form.nac_dia.value ? `${form.nac_anio.value}-${form.nac_mes.value}-${form.nac_dia.value}` : '' }
+  const validBirth = (v) => {
+    const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(v)
+    if (!m) return false
+    const d = new Date(Date.UTC(+m[1], m[2] - 1, +m[3]))
+    return d.getUTCDate() === +m[3] && d.getUTCMonth() === m[2] - 1 && v <= todaySV() && +m[1] >= +todaySV().slice(0, 4) - 110
+  }
+  // Campos agrupados (radios / tres listas): el error se marca en el contenedor o en cada lista.
+  const fieldOf = (name) => (name === 'fecha_nacimiento' ? form.nac_dia : name === 'genero' ? $('input[name="genero"]') : form.elements[name])
+  const errName = (name) => (/^nac_/.test(name) ? 'fecha_nacimiento' : name)
+  function mark(name, on) {
+    const targets = name === 'genero' ? [$('[data-group="genero"]')] : name === 'fecha_nacimiento' ? $$('.dob select') : [form.elements[name]]
+    targets.forEach((t) => { if (t && t.setAttribute) on ? t.setAttribute('aria-invalid', 'true') : t.removeAttribute('aria-invalid') })
+  }
   function setErr(name, msg) {
     const el = $(`[data-err="${name}"]`)
     if (el) el.textContent = msg
-    const input = form.elements[name]
-    if (input && input.setAttribute) input.setAttribute('aria-invalid', 'true')
+    mark(name, true)
   }
-  function clearErr(name) { const el = $(`[data-err="${name}"]`); if (el) el.textContent = ''; const i = form.elements[name]; if (i && i.removeAttribute) i.removeAttribute('aria-invalid') }
+  function clearErr(name) { name = errName(name); const el = $(`[data-err="${name}"]`); if (el) el.textContent = ''; mark(name, false) }
   function payload() {
     const foreign = form.residencia.value === 'extranjero'
     const dial = form.pais.selectedOptions[0]?.dataset.dial || ''
@@ -210,6 +224,7 @@
     return {
       service: state.service, date: state.date, time: state.time, residencia: form.residencia.value,
       nombres: form.nombres.value, apellidos: form.apellidos.value,
+      genero: form.genero.value, fecha_nacimiento: birth(),
       telefono: foreign ? (raw.startsWith('+') ? raw : dial + raw.replace(/^0+/, '')) : raw,
       dui: foreign ? '' : form.dui.value, pasaporte: foreign ? form.pasaporte.value : '', pais: foreign ? form.pais.value : '',
       correo: form.correo.value, motivo: form.motivo.value, consentimiento: form.consentimiento.checked, lang: I.lang,
@@ -222,6 +237,8 @@
     if (!p.time) e.time = B.err.time
     if (p.nombres.trim().length < 2) e.nombres = B.err.nombres
     if (p.apellidos.trim().length < 2) e.apellidos = B.err.apellidos
+    if (!['masculino', 'femenino'].includes(p.genero)) e.genero = B.err.genero
+    if (!validBirth(p.fecha_nacimiento)) e.fecha_nacimiento = B.err.fecha_nacimiento
     if (p.residencia === 'extranjero') {
       if (!p.pais) e.pais = B.err.pais
       if (!/^\+[1-9]\d{6,14}$/.test(p.telefono.replace(/[\s()-]/g, ''))) e.telefono = B.err.telefonoIntl
@@ -239,9 +256,10 @@
     const first = Object.keys(e)[0]
     if (first === 'service') fold('service', true)
     if (first === 'time') fold('time', true)
-    const target = first === 'date' ? $('.cal') : first === 'service' ? $('[data-fold="service"]') : first === 'time' ? $('[data-fold="time"]') : form.elements[first]
+    const field = fieldOf(first)
+    const target = first === 'date' ? $('.cal') : first === 'service' ? $('[data-fold="service"]') : first === 'time' ? $('[data-fold="time"]') : field
     target?.scrollIntoView?.({ behavior: motion ? 'smooth' : 'auto', block: 'center' })
-    if (target?.focus && form.elements[first]) setTimeout(() => form.elements[first].focus?.({ preventScroll: true }), 300)
+    if (target?.focus && field?.focus) setTimeout(() => field.focus({ preventScroll: true }), 300)
     if (anim()) gsap.fromTo('.bk-submit', { x: -6 }, { x: 0, duration: .5, ease: 'elastic.out(1, .3)' })
   }
 
@@ -328,7 +346,7 @@
   })
 
   /* ---------- Borrador en sessionStorage (no se pierde al recargar) ---------- */
-  const DRAFT = 'dg-draft', KEEP = ['residencia', 'nombres', 'apellidos', 'telefono', 'pais', 'correo', 'motivo']
+  const DRAFT = 'dg-draft', KEEP = ['residencia', 'nombres', 'apellidos', 'genero', 'nac_dia', 'nac_mes', 'nac_anio', 'telefono', 'pais', 'correo', 'motivo']
   function saveDraft() { try { sessionStorage.setItem(DRAFT, JSON.stringify(Object.fromEntries(KEEP.map((k) => [k, form.elements[k].value])))) } catch (e) {} }
   function clearDraft() { try { sessionStorage.removeItem(DRAFT) } catch (e) {} }
   try {

@@ -16,7 +16,7 @@ Entregables: (1) `docs/PRD.md` en un repo nuevo hermano `dental-gert-website/`, 
 - La disponibilidad **lee Google Calendar**, así que los eventos manuales de la clínica también bloquean horarios.
 - **Una cita a la vez** (un sillón).
 - Sheets agrupados **por mes de la cita**.
-- Nacional o residente: **los cuatro campos obligatorios** (Nombres, Apellidos, Teléfono, DUI) + casilla de consentimiento obligatoria.
+- Nacional o residente: **campos obligatorios** (Nombres, Apellidos, Género, Fecha de nacimiento, Teléfono, DUI) + casilla de consentimiento obligatoria.
 - Correo opcional; sin correo, la confirmación ofrece "Añadir a Google Calendar" y ".ics".
 - Barra móvil fija "Agenda tu cita | WhatsApp" activada.
 - Tipografía: solo **Manrope**.
@@ -84,7 +84,7 @@ Orden y comportamiento:
   2. Correo de aviso a **dentalgert@gmail.com** con todos los datos y botones de WhatsApp y llamada al paciente.
   3. Correo de confirmación al paciente (si dejó correo), en su idioma.
   4. Fila añadida al **Sheet del mes** en el Drive de dentalgert **y** en el de remagencysv, en tiempo real.
-- **Sheets mensuales:** archivo "Dental Gert · Citas · Noviembre 2026" dentro de la carpeta "Dental Gert / Citas" de cada Drive, agrupado **por mes de la cita**. Como se reserva hasta 60 días adelante, el archivo de un mes futuro se crea con su primera reserva. Si la clínica cancela una cita en Calendar, la reconciliación actualiza la columna Estado. Columnas: Registro, ID, Fecha cita, Inicio, Fin, Servicio, Duración, Nombres, Apellidos, Teléfono, Residencia, DUI, Pasaporte, País, Correo, Motivo, Idioma, Estado, ID evento.
+- **Sheets mensuales:** archivo "Dental Gert · Citas · Noviembre 2026" dentro de la carpeta "Dental Gert / Citas" de cada Drive, agrupado **por mes de la cita**. Como se reserva hasta 60 días adelante, el archivo de un mes futuro se crea con su primera reserva. Si la clínica cancela una cita en Calendar, la reconciliación actualiza la columna Estado. Columnas: Registro, ID, Fecha cita, Inicio, Fin, Servicio, Duración, Nombres, Apellidos, Teléfono, Residencia, DUI, Pasaporte, País, Correo, Motivo, Idioma, Estado, ID evento, Género, Fecha de nacimiento (al final para no mover la columna Estado).
 - **Cierre mensual** (cron el día 1 a las 00:05 hora de El Salvador): exporta el Sheet del mes anterior a .xlsx y lo envía por correo a **remagencysv@gmail.com** como adjunto y enlace, y deja creados los archivos del nuevo mes.
 
 ### SEO y GEO
