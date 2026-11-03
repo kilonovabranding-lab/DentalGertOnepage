@@ -1,5 +1,6 @@
 // Genera dist/ a partir de src/content.mjs. Uso: node src/build.mjs
-import { writeFileSync, mkdirSync, existsSync } from 'node:fs'
+import { writeFileSync, mkdirSync, existsSync, readFileSync } from 'node:fs'
+import { createHash } from 'node:crypto'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { SITE, BRAND, HOURS, SERVICES, COUNTRIES, T, LEGAL, duration } from './content.mjs'
@@ -9,6 +10,8 @@ const DIST = join(ROOT, 'dist')
 const out = (p, s) => { const f = join(DIST, p); mkdirSync(dirname(f), { recursive: true }); writeFileSync(f, s) }
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c])
 const GSAP = 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist'
+// CSS/JS con versión por contenido: si el archivo cambia, cambia la URL y el navegador no usa la copia en caché (24 h).
+const asset = (p) => `${p}?v=${createHash('sha256').update(readFileSync(join(DIST, p))).digest('hex').slice(0, 10)}`
 
 /* ---------- Iconos (trazo con pathLength=1 para animarlo con GSAP) ---------- */
 const P = (d) => `<path d="${d}" pathLength="1"/>`
@@ -109,7 +112,7 @@ ${noindex ? '<meta name="robots" content="noindex">' : ''}
 <link rel="manifest" href="/site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap">
-<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="${asset('/assets/css/main.css')}">
 ${home ? `<link rel="preload" as="image" href="${photo('hero', 'hero')}">` : ''}
 ${[...schemas].map((s) => `<script type="application/ld+json">${JSON.stringify(s)}</script>`).join('\n')}
 <script id="i18n" type="application/json">${JSON.stringify(i18n).replace(/</g, '\\u003c')}</script>
@@ -157,8 +160,8 @@ ${home ? `<div class="mbar" aria-hidden="true"><a class="btn btn-primary" href="
 ${BRAND.cfBeacon ? `<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"${BRAND.cfBeacon}"}'></script>` : ''}
 <script defer src="${GSAP}/gsap.min.js"></script>
 <script defer src="${GSAP}/ScrollTrigger.min.js"></script>
-<script defer src="/assets/js/main.js"></script>
-${home ? '<script defer src="/assets/js/booking.js"></script><script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>' : ''}
+<script defer src="${asset('/assets/js/main.js')}"></script>
+${home ? `<script defer src="${asset('/assets/js/booking.js')}"></script>` + '<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>' : ''}
 </body>
 </html>
 `
