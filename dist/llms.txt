@@ -3,7 +3,7 @@
 > Clínica dental en Colonia Médica, San Salvador, El Salvador. El mejor aliado de tu sonrisa. Entre 6 y 10 años de atención odontológica integral y personalizada para toda la familia. Atiende pacientes nacionales y extranjeros (español e inglés).
 
 ## Agendar
-- Agenda en línea con confirmación inmediata: https://dental-gert.pages.dev/#agendar
+- Agenda en línea con confirmación inmediata: https://dentalgert.com/#agendar
 - WhatsApp: +503 7739 0440 (https://wa.me/50377390440?text=Hola%20Dental%20Gert%2C%20quisiera%20Agendar%20mi%20cita%20por%20whatsapp)
 - Correo: dentalgert@gmail.com
 
@@ -37,4 +37,4 @@
 - Instagram: https://www.instagram.com/dentalgert/
 
 ## English
-- https://dental-gert.pages.dev/en/
+- https://dentalgert.com/en/

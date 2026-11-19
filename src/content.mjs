@@ -1,5 +1,5 @@
 // Fuente de verdad del contenido de Dental Gert (ES/EN). Las páginas se generan con `node src/build.mjs`.
-export const SITE = process.env.SITE_URL || 'https://dental-gert.pages.dev'
+export const SITE = process.env.SITE_URL || 'https://dentalgert.com'
 
 export const BRAND = {
   name: 'Dental Gert',
